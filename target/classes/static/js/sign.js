@@ -13,9 +13,12 @@
         if (!form.checkValidity()) {
           event.preventDefault();
           event.stopPropagation();
+          console.log("Hello world");
         } else {
           event.preventDefault();
-          logIn();
+          signIn();
+          console.log("Register new User");
+          $(location).attr("href","index.html")
         }
         form.classList.add("was-validated");
       },
@@ -24,18 +27,20 @@
   });
 })();
 
-function logIn() {
+function signIn() {
+  let user = {
+    name: $("#username").val(),
+    email: $("#email").val(),
+    password: $("#password").val()
+  }
   $.ajax({
-    url: "http://localhost:8080/api/user/" + $("#email-login").val() + "/" + $("#password-login").val(),
-    type: "GET",
+    url: "http://localhost:8080/api/user/new",
+    type: "POST",
+    data: JSON.stringify(user),
+    contentType: "application/JSON",
     dataType: "json",
-    success: function (answer) {
-      if (answer.name != "NO DEFINIDO") {
-        $("#estadoUsuario").text("Sesión Iniciada correctamente")
-      }
-      else {
-        $("#estadoUsuario").text("Su correo o contraseña es incorrecto");
-      }
-    },
-  });
+    complete: function () {
+      //Code later
+    }
+  })
 }

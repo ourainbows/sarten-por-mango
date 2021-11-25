@@ -1,35 +1,41 @@
-$.get("/user", function (data) {
-  $("#user").html(data.name);
-  $(".unauthenticated").hide();
-  $(".authenticated").show();
-  $(".footer").show();
-  $(".tables").show();
-  $(".stadistics").show();
-});
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  "use strict";
 
-var logout = function () {
-  $.post("/logout", function () {
-    $("#user").html("");
-    $(".unauthenticated").show();
-    $(".authenticated").hide();
-    $(".footer").hide();
-    $(".tables").hide();
-    $(".stadistics").hide();
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll(".needs-validation");
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms).forEach(function (form) {
+    form.addEventListener(
+      "submit",
+      function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        } else {
+          event.preventDefault();
+          logIn();
+        }
+        form.classList.add("was-validated");
+      },
+      false
+    );
   });
-  return true;
-};
+})();
 
-$.ajaxSetup({
-  beforeSend: function (xhr, settings) {
-    if (
-      settings.type == "POST" ||
-      settings.type == "PUT" ||
-      settings.type == "DELETE"
-    ) {
-      if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
-        // Only send the token to relative URLs i.e. locally.
-        xhr.setRequestHeader("X-XSRF-TOKEN", Cookies.get("XSRF-TOKEN"));
+function logIn() {
+  $.ajax({
+    url: "http://localhost:8080/api/user/" + $("#email-login").val() + "/" + $("#password-login").val(),
+    type: "GET",
+    dataType: "json",
+    success: function (answer) {
+      if (answer.name != "NO DEFINIDO") {
+        $("#estadoUsuario").text("Sesión Iniciada correctamente")
       }
-    }
-  },
-});
+      else {
+        $("#estadoUsuario").text("Su correo o contraseña es incorrecto");
+      }
+    },
+  });
+}

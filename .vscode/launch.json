@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-sartenMangoApplication<sartenmango>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "co.edu.usa.sartenmango.sartenMangoApplication",
+            "projectName": "sartenmango",
+            "args": ""
+        }
+    ]
+}
