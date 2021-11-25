@@ -4,7 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="description" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TuFincaYa!</title>
+    <title>Con el Sarten por el Mango</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="shortcut icon"
       href="/assets/favicon-32x32.png"
@@ -19,8 +25,9 @@
   </head>
 
   <body>
-    <div>
+    <div class="container">
       <form action="" class="needs-validation" novalidate>
+        <h2>LOGIN</h2>
         <div class="form-group">
           <label for="email">Correo Electronico</label>
           <input
@@ -45,16 +52,27 @@
           />
           <div class="invalid-feedback">Ingrese una contraseña valida</div>
         </div>
+        <p>
+          <a class="link-secondary" href="#">Olvide mi contraseña</a>
+        </p>
+        <a href="newUser.html" class="link-secondary">Registrate ahora</a><br />
         <button type="submit" class="btn btn-primary" id="botoncito">
           Iniciar Sesión
         </button>
+        <p id="estadoUsuario"></p>
       </form>
-      <p>
-        ¿No tienes cuenta?
-        <a href="register.html" class="link-primary">Registrate ahora</a>
-      </p>
+      <div class="about">
+        <h1>
+          CON LA SARTEN<br />
+          POR EL MANGO
+        </h1>
+        <p>
+          Empresa Bumanguesa con mas de 10 años de trayectoria en la venta de
+          <b>utelsilios de cociona</b> mediante el
+          <b>servicio de venta directa por catalogo</b>.
+        </p>
+      </div>
     </div>
-    <p id="estadoUsuario"></p>
   </body>
 
   <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>

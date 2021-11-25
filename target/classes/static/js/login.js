@@ -26,14 +26,17 @@
 
 function logIn() {
   $.ajax({
-    url: "http://localhost:8080/api/user/" + $("#email-login").val() + "/" + $("#password-login").val(),
+    url:
+      "http://150.230.86.64:81/api/user/" +
+      $("#email-login").val() +
+      "/" +
+      $("#password-login").val(),
     type: "GET",
     dataType: "json",
     success: function (answer) {
       if (answer.name != "NO DEFINIDO") {
-        $("#estadoUsuario").text("Sesión Iniciada correctamente")
-      }
-      else {
+        $("#estadoUsuario").text("Sesión Iniciada correctamente");
+      } else {
         $("#estadoUsuario").text("Su correo o contraseña es incorrecto");
       }
     },
